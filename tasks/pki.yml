@@ -1,0 +1,12 @@
+---
+- name: installing keys/certs from {{ service_account.tls.pki_dir }} to {{ service_account.tls.dest_dir }} on the target
+  include_role:
+    name: andrewrothstein.tls
+  vars:
+    tls_become: yes
+    tls_become_user: root
+    tls_src: '{{ service_account.tls.pki_dir }}'
+    tls_dest: '{{ service_account.tls.dest_dir }}'
+    tls_dest_chown:
+      owner: '{{ service_account.user.name }}'
+      grp: '{{ service_account.user.group }}'

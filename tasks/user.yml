@@ -1,0 +1,29 @@
+---
+- name: creating service account group {{ service_account.user.group }}
+  become: yes
+  become_user: root
+  group:
+    name: '{{ service_account.user.group }}'
+    state: present
+
+- name: creating service account user {{ service_account.user.name }}
+  become: yes
+  become_user: root
+  user:
+    name: '{{ service_account.user.name }}'
+    group: '{{ service_account.user.group }}'
+    state: present
+
+- name: creating private directories for {{ service_account.user.name }}
+  become: yes
+  become_user: root
+  with_items: '{{ service_account.directories | default([]) }}'
+  file:
+    path: '{{ item.d }}'
+    state: directory
+    owner: '{{ service_account.user.name }}'
+    group: '{{ service_account.user.group }}'
+    mode: '{{ item.m | default("0700") }}'
+
+- when: service_account.tls is defined
+  include_tasks: pki.yml

@@ -1,0 +1,3 @@
+---
+- when: service_account.user is defined
+  include_tasks: user.yml

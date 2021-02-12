@@ -1,0 +1,16 @@
+---
+- hosts: all
+  vars:
+    service_account:
+      user:
+        name: test-user
+        group: test-group
+      directories:
+        - d: /etc/test-service
+          m: '0755'
+        - d: /etc/test-service/pki
+      tls:
+        pki_dir: '{{ playbook_dir }}/test-pki'
+        dest_dir: /etc/test-service
+  roles:
+  - role: '{{ playbook_dir }}'
