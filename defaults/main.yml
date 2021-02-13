@@ -1,9 +1,9 @@
 ---
 # defaults file for service_account
-service_account:
-  user:
-    name: test-user
-    group: test-group
-  tls:
-    pki_dir: /local/path/to/certs
-    dest_dir: /etc/test-service
+#service_account:
+#  user:
+#    name: test-user
+#    group: test-group
+#  tls:
+#    pki_dir: /local/path/to/certs
+#    dest_dir: /etc/test-service

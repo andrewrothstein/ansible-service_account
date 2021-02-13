@@ -2,7 +2,8 @@ andrewrothstein.service_account
 =========
 [![Build Status](https://travis-ci.org/andrewrothstein/ansible-service_account.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-service_account)
 
-Creates a service account and optionally installs a TLS key/cert
+Creates a user/group and some directories for it.
+Optionally installs a TLS key/cert
 
 Requirements
 ------------

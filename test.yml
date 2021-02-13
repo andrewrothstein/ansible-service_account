@@ -1,4 +1,8 @@
 ---
+# test no-op
+- hosts: all
+  roles:
+  - role: '{{ playbook_dir }}'
 - hosts: all
   vars:
     service_account:
