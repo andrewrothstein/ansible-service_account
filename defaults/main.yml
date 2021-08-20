@@ -4,6 +4,9 @@
 #  user:
 #    name: test-user
 #    group: test-group
+#  directories:
+#    - d: /test-data-1
+#      m: '0400'
 #  tls:
 #    pki_dir: /local/path/to/certs
 #    dest_dir: /etc/test-service
