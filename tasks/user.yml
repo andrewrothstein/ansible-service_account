@@ -12,6 +12,8 @@
   user:
     name: '{{ service_account.user.name }}'
     group: '{{ service_account.user.group }}'
+    groups: '{{ service_account.user.groups | default([]) }}'
+    append: '{{ service_account.user.append | default(false) }}'
     state: present
 
 - name: creating private directories for {{ service_account.user.name }}

@@ -4,6 +4,10 @@
 #  user:
 #    name: test-user
 #    group: test-group
+#    append: true
+#    groups:
+#    - previously-existing-group-1
+#    - previously-existing-group-2
 #  directories:
 #    - d: /test-data-1
 #      m: '0400'
