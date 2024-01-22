@@ -1,9 +1,10 @@
 ---
-# test no-op
-- hosts: all
+- name: Testing andrewrothstein.service_account no-options
+  hosts: all
   roles:
-  - role: '{{ playbook_dir }}'
-- hosts: all
+    - role: '{{ playbook_dir }}'
+- name: Testing andrewrothstein.service_account test_user:test_group
+  hosts: all
   vars:
     service_account:
       user:
@@ -17,4 +18,4 @@
         pki_dir: '{{ playbook_dir }}/test-pki'
         dest_dir: /etc/test-service
   roles:
-  - role: '{{ playbook_dir }}'
+    - role: '{{ playbook_dir }}'
