@@ -1,4 +1,4 @@
 ---
 - name: Creating a service account
   when: service_account.user is defined
-  include_tasks: user.yml
+  ansible.builtin.include_tasks: user.yml
