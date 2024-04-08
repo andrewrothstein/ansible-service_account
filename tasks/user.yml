@@ -1,32 +1,32 @@
 ---
-- name: Creating service account group {{ service_account.user.group }}
+- name: Creating service account group {{ service_account_def.user.group }}
   become: true
   become_user: root
   ansible.builtin.group:
-    name: '{{ service_account.user.group }}'
+    name: '{{ service_account_def.user.group }}'
     state: present
 
-- name: Creating service account user {{ service_account.user.name }}
+- name: Creating service account user {{ service_account_def.user.name }}
   become: true
   become_user: root
   ansible.builtin.user:
-    name: '{{ service_account.user.name }}'
-    group: '{{ service_account.user.group }}'
-    groups: '{{ service_account.user.groups | default([]) }}'
-    append: '{{ service_account.user.append | default(false) }}'
+    name: '{{ service_account_def.user.name }}'
+    group: '{{ service_account_def.user.group }}'
+    groups: '{{ service_account_def.user.groups | default([]) }}'
+    append: '{{ service_account_def.user.append | default(false) }}'
     state: present
 
-- name: Creating private directories for {{ service_account.user.name }}
+- name: Creating private directories for {{ service_account_def.user.name }}
   become: true
   become_user: root
-  with_items: '{{ service_account.directories | default([]) }}'
+  with_items: '{{ service_account_def.directories | default([]) }}'
   ansible.builtin.file:
     path: '{{ item.d }}'
     state: directory
-    owner: '{{ service_account.user.name }}'
-    group: '{{ service_account.user.group }}'
+    owner: '{{ service_account_def.user.name }}'
+    group: '{{ service_account_def.user.group }}'
     mode: '{{ item.m | default("0700") }}'
 
 - name: Installing PKI stuffs
-  when: service_account.tls is defined
+  when: service_account_def.tls is defined
   ansible.builtin.include_tasks: pki.yml
