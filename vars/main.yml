@@ -1,2 +1,8 @@
 ---
 # vars file for service_account
+service_account_state: |-
+  {%- if service_account_def.enabled | bool -%}
+  present
+  {%- else -%}
+  absent
+  {% -endif -%}

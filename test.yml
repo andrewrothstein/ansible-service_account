@@ -7,20 +7,20 @@
         name: '{{ playbook_dir }}'
 - name: Testing andrewrothstein.service_account test_user:test_group
   hosts: all
-  vars:
-    service_account_def:
-      enabled: true
-      user:
-        name: test-user
-        group: test-group
-      directories:
-        - d: /etc/test-service
-          m: '755'
-        - d: /etc/test-service/pki
-      tls:
-        pki_dir: '{{ playbook_dir }}/test-pki'
-        dest_dir: /etc/test-service
   tasks:
     - name: Running andrewrothstein.service_account
       ansible.builtin.include_role:
         name: '{{ playbook_dir }}'
+      vars:
+        service_account_def:
+          enabled: true
+          user:
+            name: test-user
+            group: test-group
+          directories:
+            - d: /etc/test-service
+              m: '755'
+            - d: /etc/test-service/pki
+          tls:
+            pki_dir: '{{ playbook_dir }}/test-pki'
+            dest_dir: /etc/test-service
