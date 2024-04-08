@@ -5,4 +5,4 @@ service_account_state: |-
   present
   {%- else -%}
   absent
-  {% -endif -%}
+  {%- endif -%}
